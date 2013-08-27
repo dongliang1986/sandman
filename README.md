@@ -119,6 +119,9 @@ It's also often changing in backwards incompatible ways.*
 You'll need to create one file with the following contents (which I call `runserver.py`):
 
 ```python
+from sandman import app, db
+app.config['SQLALCHEMY_DATABASE_URI'] = '<your database connection string (using SQLAlchemy)'
+
 from sandman.model import register, Model
 
 # Insert Models here
@@ -129,10 +132,7 @@ from sandman.model import register, Model
 # register(Model2)
 # register(Model3)
 
-from sandman import app, db
-app.config['SQLALCHEMY_DATABASE_URI'] = '<your database connection string (using SQLAlchemy)>'
 app.run()
-```
 
 Then simply run 
 
